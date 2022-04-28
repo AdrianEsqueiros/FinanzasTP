@@ -1,0 +1,11 @@
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="https://cdn-icons-png.flaticon.com/512/4844/4844321.png" width="30" height="30" class="d-inline-block align-top " alt="">
+    Bootstrap
+  </a>
+  <a class="navbar-brand" href="#" *ngIf="userLogged|async as user">
+    <img style="border-radius: 100%" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30" class="d-inline-block align-top " alt="">
+    {{user.email}}
+  </a>
+</nav>
