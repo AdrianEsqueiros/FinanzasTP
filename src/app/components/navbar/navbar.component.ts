@@ -13,4 +13,7 @@ userLogged=this.authService.getUserLogged();
   ngOnInit(): void {
   }
 
+  logout(){
+   this.authService.logOut();
+  }
 }

@@ -1,11 +1,22 @@
 <!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
-    <img src="https://cdn-icons-png.flaticon.com/512/4844/4844321.png" width="30" height="30" class="d-inline-block align-top " alt="">
-    Bootstrap
+    <img src="https://cdn-icons-png.flaticon.com/512/4844/4844321.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    Bonos Corporativos
   </a>
-  <a class="navbar-brand" href="#" *ngIf="userLogged|async as user">
-    <img style="border-radius: 100%" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30" class="d-inline-block align-top " alt="">
-    {{user.email}}
-  </a>
+
+  <div ngbDropdown class="d-inline-block" *ngIf="userLogged|async as user; else btnIngresar">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+      <img style="border-radius: 100%;" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30" class="d-inline-block align-top " alt="">
+      {{user.email}}
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem (click)="logout()">Salir</button>
+    </div>
+  </div>
+
+
+  <ng-template #btnIngresar>
+    <button class="btn btn-outline-primary" routerLink="/login">Ingresar</button>
+  </ng-template>
 </nav>
