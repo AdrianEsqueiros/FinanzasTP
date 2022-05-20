@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     password:''
   }
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
 
   }
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     const{email,password}=this.usuario
     this.authService.login(email,password).then(res=>{
       console.log("se registro: ",res);
+      this.router.navigate(['/home'])
     })
   }
 
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
     const{email,password}=this.usuario
     this.authService.loginWithGoogle(email,password).then(res=>{
       console.log("se registro: ",res);
+      this.router.navigate(['/home'])
     })
   }
 
